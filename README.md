@@ -108,18 +108,3 @@ Exemplo de argumentos de `indecx_get_answers`:
 Datas seguem DD-MM-YYYY. Respostas e convites aceitam `all`; questionário e não respondentes exigem o identificador da ação. Paginação padrão: página 1, limite 50, máximo 1000 por chamada. As ferramentas retornam o JSON da API sem calcular NPS nem agregar páginas automaticamente. Escolha a pesquisa e o período antes de calcular indicadores.
 
 A documentação de categorias apresenta duas formas de URL; esta implementação usa `/v2/category-info/all`, conforme o exemplo documentado. Disponibilidade e permissões podem variar por conta.
-
-## Desenvolvimento e validação
-
-```sh
-npm test
-npm pack --dry-run
-```
-
-Os testes usam dados fictícios e validam roteamento, autenticação, filtros, erros, entrada inválida e handshake MCP por stdio e HTTP. Não exigem chave real nem enviam mensagens a clientes. O workflow do GitHub executa esses checks em Node 22 e 24.
-
-As chamadas externas têm timeout de 30 segundos e recusam redirecionamentos. Erros não expõem a chave ou o corpo de erro do provedor. O servidor não grava respostas em disco; o cliente de IA poderá conservar os dados recebidos conforme suas próprias políticas. Conteúdo de pesquisas deve ser tratado como dado, não como instrução.
-
-## Publicação
-
-Revise `git status` e `npm pack --dry-run` antes de publicar. Não inclua `.env`, respostas reais ou credenciais no repositório. O nome npm não foi reservado e o pacote não foi publicado. Licença MIT, disponível em `LICENSE`.
